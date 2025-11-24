@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>FitHype — Deep Links</title>
+		<style>
+			:root{
+				--bg: #FFFFFF;
+				--primary: #A66BFF;
+				--muted: #F5F6FA;
+				--text: #111111;
+				--sub: #6B7280;
+			}
+			html,body{height:100%;margin:0;font-family:Inter,Segoe UI, system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial}
+			body{background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;padding:32px}
+			.card{width:100%;max-width:920px;background:linear-gradient(180deg,var(--bg),#fbfbfd);border-radius:16px;box-shadow:0 8px 30px rgba(10,10,10,0.06);padding:28px}
+			.header{display:flex;align-items:center;gap:16px}
+			.logo{width:56px;height:56px;border-radius:12px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px}
+			h1{margin:0;font-size:20px}
+			p.lead{margin:6px 0 18px;color:var(--sub)}
+			.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+			.link{background:var(--muted);padding:12px;border-radius:10px;display:flex;flex-direction:column;gap:8px}
+			.link h3{margin:0;font-size:14px}
+			.link .url{font-family:monospace;font-size:13px;color:#334155;word-break:break-all}
+			.actions{display:flex;gap:8px;margin-top:6px}
+			.btn{border:0;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700}
+			.btn.primary{background:var(--primary);color:#fff}
+			.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+			.examples{margin-top:18px;padding:12px;background:#fff;border-radius:8px;border:1px solid #f0f0f5}
+			.muted{color:var(--sub);font-size:13px}
+			footer{margin-top:14px;color:var(--sub);font-size:13px}
+			@media(max-width:520px){body{padding:16px}.card{padding:18px}}
+		</style>
+	</head>
+	<body>
+		<div class="card">
+			<div class="header">
+				<div class="logo">FH</div>
+				<div>
+					<h1>FitHype Deep Links</h1>
+					<p class="lead">Open the app directly to any screen. Tap a link on a device with the app installed.</p>
+				</div>
+			</div>
+
+			<div style="margin-top:18px" class="grid" id="links">
+				<div class="link">
+					<h3>Home / Products</h3>
+					<div class="url">fithype://products</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://products')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://products')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Login</h3>
+					<div class="url">fithype://login</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://login')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://login')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Sign Up</h3>
+					<div class="url">fithype://signup</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://signup')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://signup')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Wishlist</h3>
+					<div class="url">fithype://wishlist</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://wishlist')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://wishlist')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Cart</h3>
+					<div class="url">fithype://cart</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://cart')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://cart')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Cart — Payment / Delivery</h3>
+					<div class="url">fithype://cart/paydel</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://cart/paydel')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://cart/paydel')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Cart — Confirmation</h3>
+					<div class="url">fithype://cart/confirmed</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://cart/confirmed')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://cart/confirmed')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Profile</h3>
+					<div class="url">fithype://profile</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://profile')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://profile')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Profile — Add Product</h3>
+					<div class="url">fithype://profile/add</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://profile/add')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://profile/add')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Profile — Orders</h3>
+					<div class="url">fithype://profile/history</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://profile/history')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://profile/history')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Settings</h3>
+					<div class="url">fithype://setting</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://setting')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://setting')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Brand (example)</h3>
+					<div class="url">fithype://nike</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://nike')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://nike')">Copy</button>
+					</div>
+				</div>
+
+				<div class="link">
+					<h3>Product details (example)</h3>
+					<div class="url">fithype://pinfo/REPLACE_WITH_PRODUCT_ID</div>
+					<div class="actions">
+						<button class="btn primary" onclick="openLink('fithype://pinfo/REPLACE_WITH_PRODUCT_ID')">Open</button>
+						<button class="btn ghost" onclick="copy('fithype://pinfo/REPLACE_WITH_PRODUCT_ID')">Copy</button>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="examples">
+				<div class="muted">How to use</div>
+				<ul>
+					<li>Open links from a mobile browser on a device/emulator with the app installed.</li>
+					<li>Replace placeholders like <code>REPLACE_WITH_PRODUCT_ID</code> with actual ids from your API.</li>
+					<li>If a link does not open, ensure the app is installed and the custom scheme is registered.</li>
+				</ul>
+			</div>
+
+			<footer>Generated deep link launcher — scheme: <strong>fithype://</strong></footer>
+		</div>
+
+		<script>
+			function openLink(url){
+				// Attempt to open via location.href — mobile browsers will handoff to app if registered
+				location.href = url;
+			}
+
+			async function copy(text){
+				try{
+					await navigator.clipboard.writeText(text);
+					alert('Copied: ' + text);
+				}catch(e){
+					const el = document.createElement('textarea'); el.value = text; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+					alert('Copied: ' + text);
+				}
+			}
+		</script>
+	</body>
+</html>
